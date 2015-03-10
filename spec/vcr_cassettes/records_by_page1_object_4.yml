@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.knackhq.com/v1/objects/object_4/records?page=1&rows_per_page=500
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Knack-Application-Id:
+      - 123456789
+      Content-Type:
+      - application/json
+      X-Knack-Rest-Api-Key:
+      - 123-456-789
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Origin,X-Requested-With,X-HTTP-Method-Override,Content-Type,Accept,X-Knack-Application-Id,X-Knack-REST-API-Key,Knack_Application_Id,Knack_REST_API_Key
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS, PUT, DELETE
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 19 Mar 2015 18:43:15 GMT
+      Etag:
+      - W/"dWY03l3LKGLGc8oaBscFnA=="
+      P3p:
+      - policyref="https://api.knackhq.com/w3c/p3p.xml", CP="IDC DSP COR ADM DEVi
+        TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT", CP="CAO PSA OUR"
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Set-Cookie:
+      - connect.sid=s%3AzNwKGDh1H4wallLQzyNsT2uttN4RbABd.jzwzgiWVlSbqcp%2FqNlnD5DjyR6uKzwfP2ZDJ4wFbz5Q;
+        Path=/; Expires=Sat, 21 Mar 2015 17:49:28 GMT; HttpOnly
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Knack-Server:
+      - us-e-node-1
+      Content-Length:
+      - '14727'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"total_pages":2,"current_page":1,"total_records":28,"records":[{"id":"54f9e47f0272d03b22167c52","account_status":"active","approval_status":"approved","profile_keys":"Accounting","profile_keys_raw":[{"id":"profile_8","identifier":"Accounting"}],"field_32":"First
+        Name","field_32_raw":{"last":"Last","first":"First"},"field_33":"<a href=\"mailto:flast@example.com\">flast@example.com</a>","field_33_raw":{"email":"flast@example.com"},"field_34":"*********","field_34_raw":"**********","field_188":"<span
+        class=\"54f9f0a20272d03b22169ffa\">Accounting</span>","field_188_raw":[{"id":"54f9f0a20272d03b22169ffa","identifier":"Accounting"}]},{"id":"54f9e47f0272d03b22167c52","account_status":"active","approval_status":"approved","profile_keys":"Accounting","profile_keys_raw":[{"id":"profile_8","identifier":"Accounting"}],"field_32":"First
+          Name","field_32_raw":{"last":"Last","first":"First"},"field_33":"<a href=\"mailto:flast@example.com\">flast@example.com</a>","field_33_raw":{"email":"flast@example.com"},"field_34":"*********","field_34_raw":"**********","field_188":"<span
+          class=\"54f9f0a20272d03b22169ffa\">Accounting</span>","field_188_raw":[{"id":"54f9f0a20272d03b22169ffa","identifier":"Accounting"}]}]}'
+    http_version:
+  recorded_at: Thu, 19 Mar 2015 18:43:15 GMT
+recorded_with: VCR 2.9.3

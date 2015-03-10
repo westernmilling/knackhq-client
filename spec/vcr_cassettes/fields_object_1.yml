@@ -1,0 +1,103 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.knackhq.com/v1/objects/object_1/fields
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Knack-Application-Id:
+      - 123456789
+      Content-Type:
+      - application/json
+      X-Knack-Rest-Api-Key:
+      - 123-456-789
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Origin,X-Requested-With,X-HTTP-Method-Override,Content-Type,Accept,X-Knack-Application-Id,X-Knack-REST-API-Key,Knack_Application_Id,Knack_REST_API_Key
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS, PUT, DELETE
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 17 Mar 2015 16:11:12 GMT
+      Etag:
+      - W/"aHIkzgdTh53wnlOe6EAtPw=="
+      P3p:
+      - policyref="https://api.knackhq.com/w3c/p3p.xml", CP="IDC DSP COR ADM DEVi
+        TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT", CP="CAO PSA OUR"
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Set-Cookie:
+      - connect.sid=s%3ANueO6IH-NhsnksKNJxEpNkMabi7GJGyh.k0IoQR8JvLxvpQyeelv5%2FX9zmfQ4kck5BBOz1fMRFfM;
+        Path=/; Expires=Tue, 17 Mar 2015 17:56:11 GMT; HttpOnly
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Knack-Server:
+      - us-e-node-4
+      Content-Length:
+      - '6225'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"fields":[{"label":"Stack No","key":"field_1","type":"unicode","required":false,"field_type":"short_text"},{"label":"Warehouse","key":"field_100","type":"unicode","required":false,"field_type":"connection"},{"label":"Seller","key":"field_68","type":"unicode","required":false,"field_type":"connection"},{"label":"Stack
+        No Seller","key":"field_3","type":"unicode","required":false,"field_type":"short_text"},{"label":"Stack
+        No Buyer","key":"field_169","type":"unicode","required":false,"field_type":"short_text"},{"label":"Price
+        Per Ton","key":"field_6","type":"float","required":false,"field_type":"currency"},{"label":"Bale
+        Count","key":"field_4","type":"float","required":false,"field_type":"number"},{"label":"Bale
+        Type","key":"field_156","type":"unicode","required":false,"field_type":"multiple_choice","choices":["Small
+        bales","Large bales","Compressed bales","Cubes","Haylage","Select"]},{"label":"Est
+        Bale Weight","key":"field_5","type":"float","required":false,"field_type":"number"},{"label":"Date
+        Stacked","key":"field_7","type":"datetime","required":false,"field_type":"date_time"},{"label":"Date
+        Purchased","key":"field_8","type":"datetime","required":false,"field_type":"date_time"},{"label":"Location","key":"field_12","type":"unicode","required":false,"field_type":"short_text"},{"label":"Comment","key":"field_16","type":"unicode","required":false,"field_type":"short_text"},{"label":"Pay
+        Terms","key":"field_17","type":"unicode","required":false,"field_type":"short_text"},{"label":"Contract
+        No","key":"field_18","type":"unicode","required":false,"field_type":"short_text"},{"label":"Commodity","key":"field_19","type":"unicode","required":false,"field_type":"multiple_choice","choices":["Alfalfa","Bermuda","Straw","Bermuda/Klein","Klein","Oat","Rye","Sudan","Wheat","Timothy","Straw,
+        Bermuda","Straw, Wheat","Select","Grain Hay","Chaff Pellet","Compressed Chaff","Loose
+        Chaff","Dry Cow Hay","Heifer Hay"]},{"label":"Completed","key":"field_59","type":"boolean","required":false,"field_type":"boolean"},{"label":"Bales
+        Shipped","key":"field_62","type":"float","required":false,"field_type":"sum"},{"label":"Est
+        Tons","key":"field_63","type":"float","required":false,"field_type":"equation"},{"label":"Tons
+        Shipped","key":"field_64","type":"float","required":false,"field_type":"sum"},{"label":"Tons
+        Remaining","key":"field_65","type":"float","required":false,"field_type":"equation"},{"label":"Bales
+        Remaining","key":"field_66","type":"float","required":false,"field_type":"equation"},{"label":"Load
+        Count","key":"field_86","type":"unicode","required":false,"field_type":"count"},{"label":"Scale","key":"field_103","type":"unicode","required":false,"field_type":"connection"},{"label":"Grade","key":"field_105","type":"unicode","required":false,"field_type":"multiple_choice","choices":["Dairy","Good","Low
+        Test","Rained","Mixed","Clean","Retail","Stable","Krone","Export","Select"]},{"label":"Cutting
+        No","key":"field_106","type":"float","required":false,"field_type":"number"},{"label":"Region","key":"field_107","type":"unicode","required":false,"field_type":"multiple_choice","choices":["Az","ID","Imperial","NV","OR","SJV-So","SJV-No","Utah","Blythe","Select"]},{"label":"Grower
+        Field Id","key":"field_108","type":"unicode","required":false,"field_type":"short_text"},{"label":"Record
+        Created","key":"field_134","type":"datetime","required":false,"field_type":"date_time"},{"label":"Created
+        by","key":"field_136","type":"unicode","required":false,"field_type":"connection"},{"label":"OHK
+        Dispatch","key":"field_147","type":"boolean","required":false,"field_type":"boolean"},{"label":"Buyer","key":"field_153","type":"unicode","required":false,"field_type":"multiple_choice","choices":["Alonso","Cory","Mike","Jud","Other","Select","Lyle","Richard"]},{"label":"Assigned
+        To","key":"field_154","type":"unicode","required":false,"field_type":"multiple_choice","choices":["Alonso","Cory","Mike","Unassigned","Other","Richard"]},{"label":"WM
+        Freight Rate","key":"field_170","type":"float","required":false,"field_type":"number"},{"label":"AveragePrice","key":"field_174","type":"float","required":false,"field_type":"average"},{"label":"Last
+        Bale Count","key":"field_181","type":"float","required":false,"field_type":"number"},{"label":"Last
+        Tons Approx","key":"field_182","type":"float","required":false,"field_type":"number"},{"label":"Last
+        Count Date","key":"field_183","type":"datetime","required":false,"field_type":"date_time"},{"label":"Last
+        Ton Calc","key":"field_228","type":"float","required":false,"field_type":"equation"},{"label":"Bale
+        Diff","key":"field_184","type":"float","required":false,"field_type":"equation"},{"label":"Ton
+        Diff","key":"field_185","type":"float","required":false,"field_type":"equation"},{"label":"Import
+        Note","key":"field_186","type":"unicode","required":false,"field_type":"short_text"},{"label":"User
+        Groups","key":"field_189","type":"unicode","required":false,"field_type":"connection"},{"label":"Recon
+        Note","key":"field_193","type":"unicode","required":false,"field_type":"short_text"},{"label":"Last
+        Order Requested By","key":"field_197","type":"unicode","required":false,"field_type":"connection"},{"label":"Delivered?","key":"field_198","type":"boolean","required":false,"field_type":"boolean"},{"label":"Single
+        Customer","key":"field_219","type":"unicode","required":false,"field_type":"connection"},{"label":"Invoice
+        Advance Date","key":"field_220","type":"datetime","required":false,"field_type":"date_time"},{"label":"Invoice
+        Advance Amount","key":"field_221","type":"float","required":false,"field_type":"currency"},{"label":"Seller
+        Advance Date","key":"field_222","type":"datetime","required":false,"field_type":"date_time"},{"label":"Seller
+        Advance Amount","key":"field_223","type":"float","required":false,"field_type":"currency"},{"label":"Comment
+        FOB Stack","key":"field_224","type":"unicode","required":false,"field_type":"short_text"},{"label":"Invoice
+        Advance Contract","key":"field_226","type":"float","required":false,"field_type":"number"},{"label":"Bale
+        Weight","key":"field_227","type":"float","required":false,"field_type":"equation"},{"label":"HHS
+        Confirm No","key":"field_229","type":"unicode","required":false,"field_type":"short_text"}]}'
+    http_version:
+  recorded_at: Tue, 17 Mar 2015 16:11:13 GMT
+recorded_with: VCR 2.9.3
