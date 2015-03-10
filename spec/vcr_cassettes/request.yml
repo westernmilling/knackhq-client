@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://example.com/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Knack-Application-Id:
+      - '00000000'
+      Content-Type:
+      - application/json
+      X-Knack-Rest-Api-Key:
+      - '99999999'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Origin,X-Requested-With,X-HTTP-Method-Override,Content-Type,Accept,X-Knack-Application-Id,X-Knack-REST-API-Key,Knack_Application_Id,Knack_REST_API_Key
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS, PUT, DELETE
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 04 Mar 2015 00:25:26 GMT
+      Etag:
+      - W/"30f-255407b9"
+      P3p:
+      - policyref="https://api.knackhq.com/w3c/p3p.xml", CP="IDC DSP COR ADM DEVi
+        TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT", CP="CAO PSA OUR"
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Set-Cookie:
+      - connect.sid=s%3AhbXmeCAa_GDj0eAcaKAYdi1HKzvsuPbW.vqfx7TxzdDAOvhNgPrA%2BuRgYLWHWeiM9hIl5%2BDG90%2B8;
+        Path=/; Expires=Thu, 05 Mar 2015 21:40:24 GMT; HttpOnly
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      X-Knack-Server:
+      - us-e-node-3
+      Content-Length:
+      - '783'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"objects":[{"name":"Stacks","key":"object_1"},{"name":"Loads","key":"object_2"},{"name":"Sellers","key":"object_3"},{"name":"Users","key":"object_4"},{"name":"Broker","key":"object_5"},{"name":"Dispatch","key":"object_7"},{"name":"Accounting","key":"object_8"},{"name":"Customers","key":"object_9"},{"name":"Materra","key":"object_10"},{"name":"Scales","key":"object_11"},{"name":"Squeezers","key":"object_12"},{"name":"Sales","key":"object_15"},{"name":"Warehouse","key":"object_16"},{"name":"Utah
+        Broker","key":"object_17"},{"name":"Trucking Company","key":"object_18"},{"name":"Stack
+        Counts","key":"object_19"},{"name":"User Groups","key":"object_20"},{"name":"Order
+        Status","key":"object_21"},{"name":"Fix Requests","key":"object_22"},{"name":"Fix
+        Comments","key":"object_23"}]}'
+    http_version:
+  recorded_at: Wed, 04 Mar 2015 00:25:26 GMT
+recorded_with: VCR 2.9.3
