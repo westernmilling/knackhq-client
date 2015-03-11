@@ -12,20 +12,31 @@ module Knackhq
       @x_knack_rest_api_key = x_knack_rest_api_key
     end
 
+    def all_objects
+      hash_request = request.objects.get.to_h[:objects]
+      hash_request.map do |hash|
+        Hashie.symbolize_keys! hash
+      end
+    end
+
+    def object(key)
+      hash_request = request.objects.get(key).to_h
+      return [] if hash_request.empty?
+      hash_request = hash_request[:object]['fields']
+
+      hash_request.map do |hash|
+        Hashie.symbolize_keys! hash
+      end
+    end
+
+    private
+
     def request
       headers = { 'x-knack-application-id' => @x_knack_application_id.dup,
                   'Content-Type' => 'application/json',
                   'x-knack-rest-api-key' => @x_knack_rest_api_key.dup }
-
       Blanket.wrap(@base_uri.dup,
                    :headers => headers)
-    end
-
-    def objects
-      hash_request = request.get.to_h[:objects]
-      hash_request.map do |hash|
-        Hashie.symbolize_keys! hash
-      end
     end
   end
 end

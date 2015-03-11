@@ -27,7 +27,7 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Wed, 11 Mar 2015 20:23:15 GMT
+      - Wed, 11 Mar 2015 20:23:17 GMT
       Etag:
       - W/"30f-255407b9"
       P3p:
@@ -36,13 +36,13 @@ http_interactions:
       Server:
       - nginx/1.4.6 (Ubuntu)
       Set-Cookie:
-      - connect.sid=s%3ANdeBJ8ObGvOB4D5FGg2BbEdv3-mec3Vs.BkJ%2BxbxOEoY9VuPw3bFX6%2FbUElo3nCkQeXNMNQLedRM;
-        Path=/; Expires=Fri, 13 Mar 2015 19:46:19 GMT; HttpOnly
+      - connect.sid=s%3AoDy0Pjin7W6EMZ3w26HyLSS0EtsAkvDb.Vz4UfyXsbBpVn%2BkkyDTVi0zEmX10cDNtfvV%2FZhbtQ1E;
+        Path=/; Expires=Fri, 13 Mar 2015 20:19:32 GMT; HttpOnly
       Vary:
       - Accept-Encoding
       - Accept-Encoding
       X-Knack-Server:
-      - us-e-node-2
+      - us-e-node-3
       Content-Length:
       - '783'
       Connection:
@@ -55,5 +55,5 @@ http_interactions:
         Status","key":"object_21"},{"name":"Fix Requests","key":"object_22"},{"name":"Fix
         Comments","key":"object_23"}]}'
     http_version:
-  recorded_at: Wed, 11 Mar 2015 20:23:15 GMT
+  recorded_at: Wed, 11 Mar 2015 20:23:17 GMT
 recorded_with: VCR 2.9.3

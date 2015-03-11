@@ -2,17 +2,17 @@
 http_interactions:
 - request:
     method: get
-    uri: http://example.com/
+    uri: https://api.knackhq.com/v1/objects
     body:
       encoding: US-ASCII
       string: ''
     headers:
       X-Knack-Application-Id:
-      - '00000000'
+      - 123456789
       Content-Type:
       - application/json
       X-Knack-Rest-Api-Key:
-      - '99999999'
+      - '999999'
   response:
     status:
       code: 401
@@ -27,7 +27,7 @@ http_interactions:
       Content-Type:
       - text/html; charset=utf-8
       Date:
-      - Thu, 05 Mar 2015 19:49:52 GMT
+      - Wed, 11 Mar 2015 20:23:16 GMT
       Etag:
       - W/"f-5c8078be"
       P3p:
@@ -36,12 +36,12 @@ http_interactions:
       Server:
       - nginx/1.4.6 (Ubuntu)
       Set-Cookie:
-      - connect.sid=s%3A_YhQ9dns-pfDXu5jKEXx4NlxqGrtJrTq.G5XnrCmcvRRsL5w0Ojt3FKAo93oE2VPpO0Ll4DAr4Js;
-        Path=/; Expires=Sat, 07 Mar 2015 17:37:10 GMT; HttpOnly
+      - connect.sid=s%3Aa-u5kZTq6FcVN0rvOzyoVb2bjeFPrZQZ.QmHe7VLxO8UQhFMc5j4p1p8w3vz57A25z8dc885%2FxpA;
+        Path=/; Expires=Fri, 13 Mar 2015 19:33:53 GMT; HttpOnly
       Vary:
       - Accept-Encoding
       X-Knack-Server:
-      - us-e-node-1
+      - us-e-node-4
       Content-Length:
       - '15'
       Connection:
@@ -50,5 +50,5 @@ http_interactions:
       encoding: UTF-8
       string: Invalid API Key
     http_version:
-  recorded_at: Thu, 05 Mar 2015 19:49:52 GMT
+  recorded_at: Wed, 11 Mar 2015 20:23:16 GMT
 recorded_with: VCR 2.9.3
