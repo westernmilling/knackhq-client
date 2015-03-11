@@ -12,7 +12,7 @@ module Knackhq
       @x_knack_rest_api_key = x_knack_rest_api_key
     end
 
-    def all_objects
+    def objects
       hash_request = request.objects.get.to_h[:objects]
       hash_request.map do |hash|
         Hashie.symbolize_keys! hash

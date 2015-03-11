@@ -48,10 +48,10 @@ describe Knackhq::Client do
     it { is_expected.to be_a Blanket::Response }
   end
 
-  describe '#all_objects' do
+  describe '#objects' do
     subject do
       VCR.use_cassette('all_objects') do
-        client.all_objects
+        client.objects
       end
     end
 

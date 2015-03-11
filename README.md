@@ -25,8 +25,9 @@ api = Knackhq::Client.new('knack-api-url',
 #GETs the request.
 api.request.get
 #GET all objects in api.
-api.objects
-
+api.all_objects
+#GET object_1
+api.object('object_1')
 
 ```
 
