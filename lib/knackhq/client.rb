@@ -14,19 +14,15 @@ module Knackhq
 
     def objects
       hash_request = request.objects.get.to_h[:objects]
-      hash_request.map do |hash|
-        Hashie.symbolize_keys! hash
-      end
+      hash_request.map { |hash| symbolize_hash_keys(hash) }
     end
 
     def object(key)
       hash_request = request.objects.get(key).to_h
       return [] if hash_request.empty?
-      hash_request = hash_request[:object]['fields']
+      transform_hash_keys = hash_request[:object]['fields']
 
-      hash_request.map do |hash|
-        Hashie.symbolize_keys! hash
-      end
+      transform_hash_keys.map { |hash| symbolize_hash_keys(hash) }
     end
 
     private
@@ -37,6 +33,10 @@ module Knackhq
                   'x-knack-rest-api-key' => @x_knack_rest_api_key.dup }
       Blanket.wrap(@base_uri.dup,
                    :headers => headers)
+    end
+
+    def symbolize_hash_keys(hash)
+      Hashie.symbolize_keys!(hash)
     end
   end
 end
