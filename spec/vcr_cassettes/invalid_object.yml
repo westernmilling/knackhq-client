@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.knackhq.com/v1/objects/invalid_object
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Knack-Application-Id:
+      - 123456789
+      Content-Type:
+      - application/json
+      X-Knack-Rest-Api-Key:
+      - 123-456-789
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Origin,X-Requested-With,X-HTTP-Method-Override,Content-Type,Accept,X-Knack-Application-Id,X-Knack-REST-API-Key,Knack_Application_Id,Knack_REST_API_Key
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS, PUT, DELETE
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 11 Mar 2015 20:23:18 GMT
+      Etag:
+      - W/"2-a3a6bf43"
+      P3p:
+      - policyref="https://api.knackhq.com/w3c/p3p.xml", CP="IDC DSP COR ADM DEVi
+        TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT", CP="CAO PSA OUR"
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Set-Cookie:
+      - connect.sid=s%3A_2LGGBwhidm_liD9AahRHT33EYQwlPMj.VNiO8s1ImWM35TMIxEf1AcPZ36byltXag9yJBelCoTw;
+        Path=/; Expires=Fri, 13 Mar 2015 20:14:39 GMT; HttpOnly
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Knack-Server:
+      - us-e-node-1
+      Content-Length:
+      - '2'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "{}"
+    http_version:
+  recorded_at: Wed, 11 Mar 2015 20:23:18 GMT
+recorded_with: VCR 2.9.3

@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "knackhq/client"
+
+require "irb"
+IRB.start
