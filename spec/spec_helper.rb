@@ -4,6 +4,8 @@ require 'vcr'
 require 'rspec/its'
 require 'webmock'
 require 'support/vcr'
+require 'codeclimate-test-reporter'
+CodeClimate::TestReporter.start
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|

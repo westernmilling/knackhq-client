@@ -14,29 +14,29 @@ module Knackhq
 
     def objects
       hash_request = request.objects.get.to_h[:objects]
-      hash_request.map { |hash| symbolize_hash_keys(hash) }
+      return [] if hash_request.empty?
+      symbolize_hash_keys!(hash_request)
     end
 
     def object(key)
       hash_request = request.objects.get(key).to_h
       return [] if hash_request.empty?
       transform_hash_keys = hash_request[:object]['fields']
-
-      transform_hash_keys.map { |hash| symbolize_hash_keys(hash) }
+      symbolize_hash_keys!(transform_hash_keys)
     end
 
     def fields(object)
       hash_request = request.objects(object).fields.get.to_h
       return [] if hash_request.empty?
       transform_hash_keys = hash_request[:fields]
-      transform_hash_keys.map { |hash| symbolize_hash_keys(hash) }
+      symbolize_hash_keys!(transform_hash_keys)
     end
 
     def records(object)
       hash_request = request.objects(object).records.get.to_h
       return [] if hash_request.empty?
       transform_hash_keys = hash_request[:records]
-      transform_hash_keys.map { |hash| symbolize_hash_keys(hash) }
+      symbolize_hash_keys!(transform_hash_keys)
     end
 
     def records_by_page(object, page_number)
@@ -45,7 +45,7 @@ module Knackhq
                                        :rows_per_page => 500 }).to_h
       return [] if hash_request.empty?
       transform_hash_keys = hash_request[:records]
-      transform_hash_keys.map { |hash| symbolize_hash_keys(hash) }
+      symbolize_hash_keys!(transform_hash_keys)
     end
 
     def records_info(object)
@@ -66,8 +66,10 @@ module Knackhq
                    :headers => headers)
     end
 
-    def symbolize_hash_keys(value)
-      Hashie.symbolize_keys!(value)
+    def symbolize_hash_keys!(transform_hash_keys)
+      transform_hash_keys.map do |hash|
+        Hashie.symbolize_keys!(hash)
+      end
     end
   end
 end
