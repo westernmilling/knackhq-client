@@ -1,5 +1,5 @@
 # Knackhq::Client
-
+[![Gem Version](https://badge.fury.io/rb/knackhq-client.svg)](http://badge.fury.io/rb/knackhq-client) [![Build Status](https://travis-ci.org/westernmilling/knackhq-client.svg?branch=master)](https://travis-ci.org/westernmilling/knackhq-client) [![Dependency Status](https://gemnasium.com/westernmilling/knackhq-client.svg)](https://gemnasium.com/westernmilling/knackhq-client) [![Code Climate](https://codeclimate.com/github/westernmilling/knackhq-client/badges/gpa.svg)](https://codeclimate.com/github/westernmilling/knackhq-client)
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -24,8 +24,22 @@ api = Knackhq::Client.new('knack-api-url',
                     x_knack_rest_api_key)
 #GETs the request.
 api.request.get
+
 #GET all objects in api.
-api.all_objects
+api.objects
+
+#GET object_1 fields
+api.fields('object_1')
+
+#GET object_1 records
+api.records('object_1')
+
+#GET object_1 records by page
+api.records_by_page('object_1')
+
+#Get object_1 info on records
+api.records_info('object_1')
+
 #GET object_1
 api.object('object_1')
 
