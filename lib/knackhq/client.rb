@@ -13,7 +13,10 @@ module Knackhq
     end
 
     def objects
-      hash_request = request.objects.get.to_h[:objects]
+      hash_request = request
+                     .objects
+                     .get
+                     .to_h[:objects]
       return [] if hash_request.empty?
       symbolize_hash_keys!(hash_request)
     end
@@ -40,19 +43,35 @@ module Knackhq
     end
 
     def records_by_page(object, page_number)
-      hash_request = request.objects(object).records
+      hash_request = request
+                     .objects(object)
+                     .records
                      .get(:params => { :page => page_number,
-                                       :rows_per_page => 500 }).to_h
+                                       :rows_per_page => 500 })
+                     .to_h
       return [] if hash_request.empty?
       transform_hash_keys = hash_request[:records]
       symbolize_hash_keys!(transform_hash_keys)
     end
 
     def records_info(object)
-      hash_request = request.objects(object).records
-                     .get(:params => { :rows_per_page => 500 }).to_h
+      hash_request = request
+                     .objects(object)
+                     .records
+                     .get(:params => { :rows_per_page => 500 })
+                     .to_h
       return [] if hash_request.empty?
       hash_request.delete(:records)
+      [hash_request]
+    end
+
+    def update_record(object, knackhq_id, json)
+      hash_request = request
+                     .objects(object)
+                     .records(knackhq_id)
+                     .put(:body => json)
+                     .to_h
+      return [] if hash_request.empty?
       [hash_request]
     end
 

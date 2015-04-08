@@ -21,7 +21,8 @@ describe Knackhq::Client do
     subject(:knack_client_request) { client.send(:request) }
     it { is_expected.to be_a Blanket::Wrapper }
     it { is_expected.to respond_to (:get) }
-    # it { is_expected.to respond_to (:post) }
+    it { is_expected.to respond_to (:post) }
+    it { is_expected.to respond_to (:put) }
 
     context 'when Knack receives wrong application id' do
       let(:x_knack_application_id) { '000000000' }
@@ -208,5 +209,36 @@ describe Knackhq::Client do
     #
     #   it { is_expected.to eq [] }
     # end
+  end
+
+  describe '#update_record' do
+    let(:object) { 'object_4' }
+    let(:knackhq_id) { '99999' }
+    let(:cassette) { 'update_records_object_4' }
+    let(:change) { { :account_status => 'active' } }
+    let(:json) { change.to_json }
+    subject do
+      VCR.use_cassette(cassette) do
+        client.update_record(object, knackhq_id, json)
+      end
+    end
+
+    context 'when object records exist' do
+      let(:object) { 'object_4' }
+      it { is_expected.to be_an Array }
+      its(:first) do
+        is_expected.to include change
+      end
+    end
+
+    context 'when object records do not exist' do
+      let(:cassette) { 'invalid_record_update' }
+      let(:object) { 'invalid_object' }
+
+      it 'fails with /500 Internal Server Error/' do
+        expect { subject }
+          .to raise_error.with_message(/500 Internal Server Error/)
+      end
+    end
   end
 end
