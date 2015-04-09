@@ -43,6 +43,9 @@ api.records_info('object_1')
 #GET object_1
 api.object('object_1')
 
+#PUT object_1 record
+#Knackhq ID is 12345
+api.update_record('object_1', '12345', { field_name: value }.to_json)
 ```
 
 ## Contributing
