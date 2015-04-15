@@ -5,6 +5,9 @@ require 'rspec/its'
 require 'webmock'
 require 'support/vcr'
 require 'codeclimate-test-reporter'
+require 'simplecov'
+SimpleCov.start
+
 CodeClimate::TestReporter.start
 
 RSpec.configure do |config|

@@ -22,30 +22,34 @@ Or install it yourself as:
 api = Knackhq::Client.new('knack-api-url',
                     x_knack_application_id,
                     x_knack_rest_api_key)
-#GETs the request.
-api.request.get
 
 #GET all objects in api.
 api.objects
+#Output:
+[{:name=>"Foo", :key=>"object_1"}
+{:name=>"Bar", :key=>"object_2"}]
 
 #GET object_1 fields
 api.fields('object_1')
+#Output:
+[{:label=>"Number", :key=>"field_1", :type=>"float", :required=>false, :field_type=>"number"},
+{:label=>"Last Date", :key=>"field_12", :type=>"datetime", :required=>false, :field_type=>"date_time"}]
 
 #GET object_1 records
 api.records('object_1')
-
-#GET object_1 records by page
-api.records_by_page('object_1')
-
-#Get object_1 info on records
-api.records_info('object_1')
+#Output:
+{:total_pages=>2, :current_page=>1, :total_records=>28, :records=>[{:id=>"23456", :account_status=>"active", :approval_status=>"approved", :profile_keys=>"Bar", :profile_keys_raw=>[{:id=>"12345", :identifier=>"Bar"}], :field_32=>"First Name", :field_32_raw=>{:last=>"Last", :first=>"First"}, :field_33=>"<a href=\"mailto:flast@example.com\">flast@example.com</a>", :field_33_raw=>{:email=>"flast@example.com"}, :field_34=>"*********", :field_34_raw=>"**********", :field_188=>"<span class=\"23456\">Bar</span>", :field_188_raw=>[{:id=>"23456", :identifier=>"Bar"}]}]}
 
 #GET object_1
 api.object('object_1')
+#Output
+{:id=>"34567", :default=>"", :key=>"field_1", :name=>"Foo", :rules=>[], :conditional=>false, :user=>false, :unique=>true, :required=>true, :immutable=>false, :type=>"short_text"}
 
 #PUT object_1 record
 #Knackhq ID is 12345
 api.update_record('object_1', '12345', { field_name: value }.to_json)
+#Output:
+true/false
 ```
 
 ## Contributing

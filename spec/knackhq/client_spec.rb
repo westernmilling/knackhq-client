@@ -96,7 +96,7 @@ describe Knackhq::Client do
       end
     end
 
-    context 'when object fields exists' do
+    context 'when object fields exist' do
       let(:object) { 'object_1' }
       it { is_expected.to be_an Array }
       its('first.keys') do
@@ -115,123 +115,78 @@ describe Knackhq::Client do
       it { is_expected.to eq [] }
     end
   end
+
   describe '#records' do
+    let(:object) { 'object_4' }
     let(:cassette) { 'records_object_4' }
     subject do
       VCR.use_cassette(cassette) do
-        client.records(object)
+        client.records(object, options)
       end
     end
-
-    context 'when object records exist' do
-      let(:object) { 'object_4' }
-      it { is_expected.to be_an Array }
-      its('first.keys') do
-        is_expected.to eq [:id,
-                           :account_status,
-                           :approval_status,
-                           :profile_keys,
-                           :profile_keys_raw,
-                           :field_32,
-                           :field_32_raw,
-                           :field_33,
-                           :field_33_raw,
-                           :field_34,
-                           :field_34_raw,
-                           :field_188,
-                           :field_188_raw]
-      end
-    end
-    # TODO: Knackhq Needs to fix the malformed json before this test will pass.
-    # context 'when object records do not exist' do
-    #   let(:cassette) { 'invalid_record_object' }
-    #   let(:object) { 'invalid_object' }
-    #
-    #   it { is_expected.to eq [] }
-    # end
-  end
-
-  describe '#records_by_page' do
-    subject(:records_by_page_1) do
-      VCR.use_cassette('records_by_page1_object_4') do
-        client.records_by_page(object, 1)
-      end
-    end
-    let(:records_by_page_2) do
-      VCR.use_cassette('records_by_page2_object_4') do
-        client.records_by_page(object, 2)
-      end
-    end
-
-    context 'when object has two pages' do
-      let(:object) { 'object_4' }
-      it { is_expected.to be_an Array }
-      its('first.keys') do
-        is_expected.to eq records_by_page_2.first.keys
-      end
-      its (:size) { is_expected.not_to eq records_by_page_2.size }
-    end
-
-    context 'when page is out of scope' do
-      let(:object) { 'object_4' }
-      subject(:records_by_page_1) do
-        VCR.use_cassette('invalid_records_by_page1_object_4') do
-          client.records_by_page(object, 999)
-        end
-      end
-
-      it { is_expected.to eq [] }
-    end
-  end
-
-  describe '#records_info' do
-    let(:object) { 'object_4' }
-    let(:cassette) { 'records_info_object_4' }
-    subject do
-      VCR.use_cassette(cassette) do
-        client.records_info(object)
-      end
-    end
-
-    context 'when object records exist' do
-      let(:object) { 'object_4' }
-      it { is_expected.to be_an Array }
-      its('first.keys') do
+    let(:options) { { :no_options => nil } }
+    context 'when records do not have options' do
+      let(:first_records_keys) { subject[:records].first.keys }
+      its(:keys) do
         is_expected.to eq [:total_pages,
                            :current_page,
-                           :total_records]
+                           :total_records,
+                           :records]
+      end
+      its([:total_pages]) { is_expected.to be 2 }
+      its([:current_page]) { is_expected.to be 1 }
+      its([:total_records]) { is_expected.to be 28 }
+      it do
+        expect(first_records_keys).to include :id,
+                                              :field_32,
+                                              :field_33,
+                                              :field_34,
+                                              :field_188
       end
     end
-    # TODO: Knackhq Needs to fix the malformed json before this test will pass.
-    # context 'when object records do not exist' do
-    #   let(:cassette) { 'invalid_record_object' }
-    #   let(:object) { 'invalid_object' }
-    #
-    #   it { is_expected.to eq [] }
-    # end
-  end
+    context 'when records have options' do
+      let(:cassette) { 'records_object_options_4' }
+      let(:options) { { :rows_per_page => 10, :page_number => 2 } }
 
-  describe '#update_record' do
-    let(:object) { 'object_4' }
-    let(:knackhq_id) { '99999' }
-    let(:cassette) { 'update_records_object_4' }
-    let(:change) { { :account_status => 'active' } }
-    let(:json) { change.to_json }
-    subject do
-      VCR.use_cassette(cassette) do
-        client.update_record(object, knackhq_id, json)
-      end
-    end
-
-    context 'when object records exist' do
-      let(:object) { 'object_4' }
-      it { is_expected.to eq true }
+      its([:total_pages]) { is_expected.to be 3 }
+      its([:current_page]) { is_expected.to eq '2' }
+      its([:total_records]) { is_expected.to be 28 }
     end
 
     context 'when object records do not exist' do
-      let(:object) { 'object_4' }
-      let(:cassette) { 'update_records_object_4_empty' }
-      it { is_expected.to eq false }
+      let(:object) { 'object_9' }
+      it { is_expected.to eq [] }
+    end
+
+    context 'when object does not exist' do
+      let(:object) { 'invalid_object' }
+      let(:object) { 'object_99' }
+
+      it 'fails with /500 Internal Server Error/' do
+        expect { subject }
+          .to raise_error.with_message(/500 Internal Server Error/)
+      end
+    end
+  end
+
+  describe '#update_record' do
+    let(:object) { 'object_2' }
+    let(:knackhq_id) { '999999999' }
+    let(:cassette) { 'update_records_object_2' }
+    subject do
+      VCR.use_cassette(cassette) do
+        client.update_record(object, knackhq_id,
+                             { :field_21 => '1116' }.to_json)
+      end
+    end
+
+    context 'when object records exist' do
+      it { is_expected.to be true }
+    end
+
+    context 'when object records do not exist' do
+      let(:knackhq_id) { '77777777' }
+      it { is_expected.to be false }
     end
 
     context 'when object does not exist' do

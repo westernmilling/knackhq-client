@@ -16,53 +16,37 @@ module Knackhq
       hash_request = request
                      .objects
                      .get
-                     .to_h[:objects]
-      return [] if hash_request.empty?
-      symbolize_hash_keys!(hash_request)
+      payload = payload_hash(hash_request)
+      translate_payload(payload) { payload[:objects] }
     end
 
     def object(key)
-      hash_request = request.objects.get(key).to_h
-      return [] if hash_request.empty?
-      transform_hash_keys = hash_request[:object]['fields']
-      symbolize_hash_keys!(transform_hash_keys)
+      hash_request = request
+                     .objects
+                     .get(key)
+      payload = payload_hash(hash_request)
+      translate_payload(payload) { payload[:object][:fields] }
     end
 
     def fields(object)
-      hash_request = request_object(object, :fields)
-      return [] if hash_request.empty?
-      transform_hash_keys = hash_request[:fields]
-      symbolize_hash_keys!(transform_hash_keys)
+      hash_request = request
+                     .objects(object)
+                     .fields
+                     .get
+      payload = payload_hash(hash_request)
+      translate_payload(payload) { payload[:fields] }
     end
 
-    def records(object)
-      hash_request = request_object(object, :records)
-      return [] if hash_request.empty?
-      transform_hash_keys = hash_request[:records]
-      symbolize_hash_keys!(transform_hash_keys)
-    end
-
-    def records_by_page(object, page_number)
+    def records(object, options = {})
+      rows_per_page = options[:rows_per_page] || 25
+      page_number = options[:page_number] || 1
       hash_request = request
                      .objects(object)
                      .records
                      .get(:params => { :page => page_number,
-                                       :rows_per_page => 500 })
-                     .to_h
-      return [] if hash_request.empty?
-      transform_hash_keys = hash_request[:records]
-      symbolize_hash_keys!(transform_hash_keys)
-    end
-
-    def records_info(object)
-      hash_request = request
-                     .objects(object)
-                     .records
-                     .get(:params => { :rows_per_page => 500 })
-                     .to_h
-      return [] if hash_request.empty?
-      hash_request.delete(:records)
-      [hash_request]
+                                       :rows_per_page => rows_per_page })
+      payload = payload_hash(hash_request)
+      translate_payload(payload) { payload }
     end
 
     def update_record(object, knackhq_id, json)
@@ -70,8 +54,7 @@ module Knackhq
                      .objects(object)
                      .records(knackhq_id)
                      .put(:body => json)
-                     .to_h
-      !hash_request.empty?
+      !payload_hash(hash_request).empty?
     end
 
     private
@@ -84,14 +67,14 @@ module Knackhq
                    :headers => headers)
     end
 
-    def request_object(object, function)
-      request.objects(object).send(function).get.to_h
+    def payload_hash(hash_request)
+      payload = hash_request.first.to_h
+      Hashie.symbolize_keys!(payload)
     end
 
-    def symbolize_hash_keys!(transform_hash_keys)
-      transform_hash_keys.map do |hash|
-        Hashie.symbolize_keys!(hash)
-      end
+    def translate_payload(payload, &block)
+      return [] if payload.empty?
+      block.call
     end
   end
 end

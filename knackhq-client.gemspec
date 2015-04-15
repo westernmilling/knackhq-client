@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.executables = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'blanket_wrapper', '~> 1.1.0'
+  spec.add_dependency 'blanket_wrapper', '~> 2.0.1'
   spec.add_dependency 'rest-client'
   spec.add_dependency 'hashie'
   spec.add_development_dependency 'bundler', '~> 1.7'
@@ -30,4 +30,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec-its', '~> 1.2.0'
   spec.add_development_dependency 'vcr', '~> 2.9.0'
   spec.add_development_dependency 'webmock', '~> 1.20.0'
+  spec.add_development_dependency 'simplecov', '~> 0.9.0'
 end
