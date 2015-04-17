@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.knackhq.com/v1/objects/object_4/records/99999
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Knack-Application-Id:
+      - 123456789
+      Content-Type:
+      - application/json
+      X-Knack-Rest-Api-Key:
+      - 123-456-789
+  response:
+    status:
+      code: 500
+      message: Internal Server Error
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Origin,X-Requested-With,X-HTTP-Method-Override,Content-Type,Accept,X-Knack-Application-Id,X-Knack-REST-API-Key,Knack_Application_Id,Knack_REST_API_Key
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS, PUT, DELETE
+      Content-Type:
+      - text/html; charset=utf-8
+      Date:
+      - Fri, 17 Apr 2015 21:54:06 GMT
+      P3p:
+      - policyref="https://api.knackhq.com/w3c/p3p.xml", CP="IDC DSP COR ADM DEVi
+        TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT", CP="CAO PSA OUR"
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Set-Cookie:
+      - connect.sid=s%3AJawA0inyxR255L19Pn4ZYBZtfC8Tc8ti.EEC5dTQvD25tyvBinz2mFtbTB9mLlrLyMLhUoJw4L%2B0;
+        Path=/; Expires=Sun, 19 Apr 2015 21:44:13 GMT; HttpOnly
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Knack-Server:
+      - us-e-node-4
+      Content-Length:
+      - '22'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        Internal Server Error
+    http_version:
+  recorded_at: Fri, 17 Apr 2015 21:54:06 GMT
+recorded_with: VCR 2.9.3
