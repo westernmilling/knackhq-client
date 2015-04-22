@@ -77,8 +77,7 @@ module Knackhq
     end
 
     def payload_hash(hash_request)
-      payload = hash_request.first.to_h
-      Hashie.symbolize_keys!(payload)
+      Hashie.symbolize_keys!(hash_request.to_h)
     end
 
     def translate_payload(payload, &block)
