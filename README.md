@@ -40,6 +40,10 @@ api.records('object_1')
 #Output:
 {:total_pages=>2, :current_page=>1, :total_records=>28, :records=>[{:id=>"23456", :account_status=>"active", :approval_status=>"approved", :profile_keys=>"Bar", :profile_keys_raw=>[{:id=>"12345", :identifier=>"Bar"}], :field_32=>"First Name", :field_32_raw=>{:last=>"Last", :first=>"First"}, :field_33=>"<a href=\"mailto:flast@example.com\">flast@example.com</a>", :field_33_raw=>{:email=>"flast@example.com"}, :field_34=>"*********", :field_34_raw=>"**********", :field_188=>"<span class=\"23456\">Bar</span>", :field_188_raw=>[{:id=>"23456", :identifier=>"Bar"}]}]}
 
+#GET object_1 record
+#Knackhq record ID is 12345
+api.update_record('object_1', '12345')
+
 #GET object_1
 api.object('object_1')
 #Output

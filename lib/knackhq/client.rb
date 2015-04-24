@@ -49,6 +49,15 @@ module Knackhq
       translate_payload(payload) { payload }
     end
 
+    def record(object, record_knackhq_id)
+      hash_request = request
+                     .objects(object)
+                     .records(record_knackhq_id)
+                     .get
+      payload = payload_hash(hash_request)
+      translate_payload(payload) { payload }
+    end
+
     def update_record(object, knackhq_id, json)
       hash_request = request
                      .objects(object)

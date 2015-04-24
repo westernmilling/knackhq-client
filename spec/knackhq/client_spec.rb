@@ -125,6 +125,7 @@ describe Knackhq::Client do
       end
     end
     let(:options) { { :no_options => nil } }
+
     context 'when records do not have options' do
       let(:first_records_keys) { subject[:records].first.keys }
       its(:keys) do
@@ -144,6 +145,7 @@ describe Knackhq::Client do
                                               :field_188
       end
     end
+
     context 'when records have options' do
       let(:cassette) { 'records_object_options_4' }
       let(:options) { { :rows_per_page => 10, :page_number => 2 } }
@@ -159,9 +161,37 @@ describe Knackhq::Client do
     end
 
     context 'when object does not exist' do
-      let(:object) { 'invalid_object' }
       let(:object) { 'object_99' }
 
+      it 'fails with /500 Internal Server Error/' do
+        expect { subject }
+          .to raise_error.with_message(/500 Internal Server Error/)
+      end
+    end
+  end
+
+  describe '#record' do
+    let(:object) { 'object_4' }
+    let(:record_knackhq_id) { '999999' }
+    let(:cassette) { 'record_object_4' }
+    subject do
+      VCR.use_cassette(cassette) do
+        client.record(object, record_knackhq_id)
+      end
+    end
+
+    context 'when record exists' do
+      its (:keys) do
+        is_expected.to include :id,
+                               :account_status,
+                               :approval_status,
+                               :profile_keys
+      end
+    end
+
+    context 'when record does not exist' do
+      let(:cassette) { 'invalid_record_knackhq_id' }
+      let(:record_knackhq_id) { '99999' }
       it 'fails with /500 Internal Server Error/' do
         expect { subject }
           .to raise_error.with_message(/500 Internal Server Error/)
