@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    knackhq-client (0.2.1)
-      blanket_wrapper (~> 2.0.1)
+    knackhq-client (0.3.0)
+      blanket_wrapper (~> 3.0.0)
       hashie
       rest-client
 
@@ -10,7 +10,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     addressable (2.3.8)
-    blanket_wrapper (2.0.1)
+    blanket_wrapper (3.0.1)
       httparty
       recursive-open-struct
     codeclimate-test-reporter (0.4.7)
