@@ -229,4 +229,31 @@ describe Knackhq::Client do
       end
     end
   end
+
+  describe '#create' do
+    let(:object) { 'object_3' }
+    let(:cassette) { 'create_valid_record' }
+    let(:params) {{ field_21: "1115" }}
+    subject do
+      VCR.use_cassette(cassette) do
+        client.create(object, params.to_json)
+      end
+    end
+
+    context 'when object record is created' do
+      it { is_expected.to be true }
+    end
+
+    context 'when object record is not created' do
+      let(:cassette) { 'record_not_created' }
+      let(:object) { 'invalid_object' }
+
+      it 'fails with /500 Internal Server Error/' do
+        expect { subject }
+            .to raise_error.with_message(/500 Internal Server Error/)
+      end
+    end
+
+  end
+
 end
