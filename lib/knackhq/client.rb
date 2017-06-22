@@ -38,13 +38,13 @@ module Knackhq
     end
 
     def records(object, options = {})
-      rows_per_page = options[:rows_per_page] || 25
-      page_number = options[:page_number] || 1
+      rows_per_page = options.delete(:rows_per_page) || 25
+      page_number = options.delete(:page_number) || 1
       hash_request = request
                      .objects(object)
                      .records
                      .get(:params => { :page => page_number,
-                                       :rows_per_page => rows_per_page })
+                                       :rows_per_page => rows_per_page }.merge(options))
       payload = payload_hash(hash_request)
       translate_payload(payload) { payload }
     end
