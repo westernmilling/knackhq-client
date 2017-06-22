@@ -66,6 +66,15 @@ module Knackhq
       !payload_hash(hash_request).empty?
     end
 
+    def create(object, data)
+      hash_request = request
+                     .objects(object)
+                     .records
+                     .post(body: data)
+      !payload_hash(hash_request).empty?
+
+    end
+
     private
 
     def request
