@@ -231,27 +231,27 @@ describe Knackhq::Client do
   end
 
   describe '#create' do
-    let(:object) { 'object_3' }
+    let(:object) { 'object_37' }
     let(:cassette) { 'create_valid_record' }
-    let(:params) { { field_21: '1115' } }
-    subject do
+    let(:params) { { field_384: 'Lovelight', field_385: 'Architect' } }
+    subject(:response) do
       VCR.use_cassette(cassette) do
         client.create(object, params.to_json)
       end
     end
 
     context 'when object record is created' do
-      it { is_expected.to be true }
+      it { expect(response[:id]).to eq('5953a50ce39f6a5bb74c4781') }
+      it { expect(response[:field_384]).to eq('Lovelight') }
+      it { expect(response[:field_385]).to eq('Architect') }
     end
 
     context 'when object record is not created' do
       let(:cassette) { 'record_not_created' }
       let(:object) { 'invalid_object' }
 
-      it 'fails with /500 Internal Server Error/' do
-        expect { subject }
-          .to raise_error.with_message(/500 Internal Server Error/)
-      end
+      it { expect(response).to eq('Malformed Object Key: invalid_object') }
+
     end
   end
 
