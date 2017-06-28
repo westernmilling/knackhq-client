@@ -6,6 +6,8 @@ require 'webmock'
 require 'support/vcr'
 require 'codeclimate-test-reporter'
 require 'simplecov'
+require 'mime/types'
+
 SimpleCov.start
 
 CodeClimate::TestReporter.start
