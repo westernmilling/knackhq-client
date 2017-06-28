@@ -65,7 +65,10 @@ module Knackhq
                      .objects(object)
                      .records(knackhq_id)
                      .put(body: json)
-      !payload_hash(hash_request).empty?
+      payload = payload_hash(hash_request)
+      translate_payload(payload) { payload }
+    rescue Blanket::Exception => e
+      e.body
     end
 
     def create(object, json)
