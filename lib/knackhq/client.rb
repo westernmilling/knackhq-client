@@ -1,8 +1,10 @@
 require 'knackhq/client/version'
 require 'blanket'
 require 'hashie'
+require 'rest_client'
 
 module Knackhq
+  # Client is the Knack API Client
   class Client
     attr_accessor :base_uri, :x_knack_application_id, :x_knack_rest_api_key
 
@@ -43,8 +45,8 @@ module Knackhq
       hash_request = request
                      .objects(object)
                      .records
-                     .get(:params => { :page => page_number,
-                                       :rows_per_page => rows_per_page })
+                     .get(params: { page: page_number,
+                                    rows_per_page: rows_per_page })
       payload = payload_hash(hash_request)
       translate_payload(payload) { payload }
     end
@@ -62,7 +64,7 @@ module Knackhq
       hash_request = request
                      .objects(object)
                      .records(knackhq_id)
-                     .put(:body => json)
+                     .put(body: json)
       !payload_hash(hash_request).empty?
     end
 
@@ -72,19 +74,14 @@ module Knackhq
                      .records
                      .post(body: data)
       !payload_hash(hash_request).empty?
-
     end
 
     def upload(data)
-      hash_request =file_request
-                    .applications(@x_knack_application_id.dup)
-                    .assets
-                    .file
-                    .upload
-                    .post(body: data)
-
-      !payload_hash(hash_request).empty?
-
+      response = RestClient
+                 .post("#{@base_uri}/applications/#{@x_knack_application_id}/assets/file/upload",
+                       data, 'Content-Type' => 'multipart/form-data',
+                             'x-knack-rest-api-key' => @x_knack_rest_api_key.dup)
+      JSON.parse(response)
     end
 
     private
@@ -94,23 +91,25 @@ module Knackhq
                   'Content-Type' => 'application/json',
                   'x-knack-rest-api-key' => @x_knack_rest_api_key.dup }
       Blanket.wrap(@base_uri.dup,
-                   :headers => headers)
+                   headers: headers)
     end
 
     def file_request
-      headers = { 'Content-Type' => 'multipart/form-data',
-                  'x-knack-rest-api-key' => @x_knack_rest_api_key.dup }
+      headers = {
+        'Content-Type' => 'multipart/form-data',
+        'x-knack-rest-api-key' => @x_knack_rest_api_key.dup
+      }
       Blanket.wrap(@base_uri.dup,
-                   :headers => headers)
+                   headers: headers)
     end
 
     def payload_hash(hash_request)
       Hashie.symbolize_keys!(hash_request.to_h)
     end
 
-    def translate_payload(payload, &block)
+    def translate_payload(payload)
       return [] if payload.empty?
-      block.call
+      yield
     end
   end
 end
