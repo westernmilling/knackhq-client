@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    knackhq-client (0.3.0)
+    knackhq-client (0.3.1)
       blanket_wrapper (~> 3.0.0)
       hashie
       rest-client
@@ -10,7 +10,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     addressable (2.3.8)
-    blanket_wrapper (3.0.1)
+    blanket_wrapper (3.0.2)
       httparty
       recursive-open-struct
     byebug (9.0.6)
@@ -21,20 +21,20 @@ GEM
       safe_yaml (~> 1.0.0)
     diff-lcs (1.2.5)
     docile (1.1.5)
-    domain_name (0.5.24)
+    domain_name (0.5.20170404)
       unf (>= 0.0.5, < 1.0.0)
-    hashie (3.4.1)
-    http-cookie (1.0.2)
+    hashie (3.5.5)
+    http-cookie (1.0.3)
       domain_name (~> 0.5)
     httparty (0.13.3)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
-    json (1.8.2)
+    json (1.8.3)
     method_source (0.8.2)
     mime-types (2.4.3)
     multi_json (1.11.0)
     multi_xml (0.5.5)
-    netrc (0.10.3)
+    netrc (0.11.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -43,11 +43,11 @@ GEM
       byebug (~> 9.0)
       pry (~> 0.10)
     rake (10.4.2)
-    recursive-open-struct (0.6.3)
-    rest-client (1.8.0)
+    recursive-open-struct (1.0.5)
+    rest-client (2.0.2)
       http-cookie (>= 1.0.2, < 2.0)
-      mime-types (>= 1.16, < 3.0)
-      netrc (~> 0.7)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
     rspec (3.2.0)
       rspec-core (~> 3.2.0)
       rspec-expectations (~> 3.2.0)
@@ -73,7 +73,7 @@ GEM
     slop (3.6.0)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.1)
+    unf_ext (0.0.7.4)
     vcr (2.9.3)
     webmock (1.20.4)
       addressable (>= 2.3.6)
