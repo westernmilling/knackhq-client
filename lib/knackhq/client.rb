@@ -76,11 +76,21 @@ module Knackhq
       !payload_hash(hash_request).empty?
     end
 
-    def upload(data)
-      response = RestClient
-                 .post("#{@base_uri}/applications/#{@x_knack_application_id}/assets/file/upload",
-                       data, 'Content-Type' => 'multipart/form-data',
-                             'x-knack-rest-api-key' => @x_knack_rest_api_key.dup)
+    def file_upload(data)
+      response =
+        RestClient.post(
+          "#{@base_uri}/applications/#{@x_knack_application_id}/assets/file/upload",
+          data, file_headers
+        )
+      JSON.parse(response)
+    end
+
+    def image_upload(data)
+      response =
+        RestClient.post(
+          "#{@base_uri}/applications/#{@x_knack_application_id}/assets/image/upload",
+          data, file_headers
+        )
       JSON.parse(response)
     end
 
@@ -94,13 +104,11 @@ module Knackhq
                    headers: headers)
     end
 
-    def file_request
-      headers = {
+    def file_headers
+      {
         'Content-Type' => 'multipart/form-data',
         'x-knack-rest-api-key' => @x_knack_rest_api_key.dup
       }
-      Blanket.wrap(@base_uri.dup,
-                   headers: headers)
     end
 
     def payload_hash(hash_request)

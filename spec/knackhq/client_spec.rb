@@ -3,8 +3,8 @@ require 'spec_helper'
 describe Knackhq::Client do
   let(:client) { knack_client }
   let(:base_uri) { 'https://api.knackhq.com/v1' }
-  let(:x_knack_application_id) { '594a0c63dfe6f8547f27d1da' }
-  let(:x_knack_rest_api_key) { '21afab70-5651-11e7-940b-21f92b9aac3d' }
+  let(:x_knack_application_id) { '123456789' }
+  let(:x_knack_rest_api_key) { '123-456-789' }
 
   let(:knack_client) do
     Knackhq::Client.new(base_uri,
@@ -255,21 +255,39 @@ describe Knackhq::Client do
     end
   end
 
-  describe '#upload' do
-    let(:cassette) { 'upload_file2' }
+  describe '#file_upload' do
+    let(:cassette) { 'file_upload' }
     let(:file) { File.new(File.join('spec', 'fixtures', 'files', 'test_document.pdf')) }
     let(:params) { { files: file } }
 
     subject(:response) do
       VCR.use_cassette(cassette) do
-        client.upload(params)
+        client.file_upload(params)
       end
     end
     context 'when file is uploaded' do
-      it { expect(response['id']).to eq('59537e723aec6451911d6072') }
+      it { expect(response['id']).to eq('595384046fa0b656cec2e5d3') }
       it { expect(response['type']).to eq('file') }
       it { expect(response['filename']).to eq('test_document.pdf') }
       it { expect(response['size']).to eq(8200) }
+    end
+  end
+
+  describe '#image_upload' do
+    let(:cassette) { 'image_upload' }
+    let(:file) { File.new(File.join('spec', 'fixtures', 'files', 'test_image.png')) }
+    let(:params) { { files: file } }
+
+    subject(:response) do
+      VCR.use_cassette(cassette) do
+        client.image_upload(params)
+      end
+    end
+    context 'when image is uploaded' do
+      it { expect(response['id']).to eq('595385902a4223570f432a25') }
+      it { expect(response['type']).to eq('image') }
+      it { expect(response['filename']).to eq('test_image.png') }
+      it { expect(response['size']).to eq(104107) }
     end
   end
 end
