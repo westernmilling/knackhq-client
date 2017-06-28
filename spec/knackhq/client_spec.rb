@@ -3,8 +3,8 @@ require 'spec_helper'
 describe Knackhq::Client do
   let(:client) { knack_client }
   let(:base_uri) { 'https://api.knackhq.com/v1' }
-  let(:x_knack_application_id) { '123456789' }
-  let(:x_knack_rest_api_key) { '123-456-789' }
+  let(:x_knack_application_id) { '594a0c63dfe6f8547f27d1da' }
+  let(:x_knack_rest_api_key) { '21afab70-5651-11e7-940b-21f92b9aac3d' }
 
   let(:knack_client) do
     Knackhq::Client.new(base_uri,
@@ -252,6 +252,35 @@ describe Knackhq::Client do
         expect { subject }
             .to raise_error.with_message(/500 Internal Server Error/)
       end
+    end
+
+  end
+
+  describe '#upload' do
+    let(:cassette) { 'upload_file2' }
+    let(:file) { '22040924.pdf' }
+    let(:file_data) { [] }
+    let(:params) { File.read(file) }
+    let(:attrs) { {} }
+
+    subject do
+
+      file_data << "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\n"
+      file_data << "Content-Disposition: form-data; name=\"files\"; filename=\"#{File.basename(file)}\"\r\n"
+      file_data << "Content-Type: #{MIME::Types.type_for(file).first.content_type}\r\n\r\n\r\n"
+      file_data << File.read(file)
+      file_data << "------WebKitFormBoundary7MA4YWxkTrZu0gW--"
+      # attrs['files'] = file_data.join.force_encoding("ISO-8859-1").encode("UTF-8")
+      # attrs['files'] = params.encode!('UTF-16', 'UTF-8', :invalid => :replace, :replace => '')
+      # attrs['files'] = params.force_encoding("ISO-8859-1").encode("UTF-8")
+
+      VCR.use_cassette(cassette) do
+        client.upload(params)
+      end
+    end
+
+    context 'when file is uploaded' do
+      it { is_expected.to be true }
     end
 
   end

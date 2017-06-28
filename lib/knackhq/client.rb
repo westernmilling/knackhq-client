@@ -75,11 +75,30 @@ module Knackhq
 
     end
 
+    def upload(data)
+      hash_request =file_request
+                    .applications(@x_knack_application_id.dup)
+                    .assets
+                    .file
+                    .upload
+                    .post(body: data)
+
+      !payload_hash(hash_request).empty?
+
+    end
+
     private
 
     def request
       headers = { 'x-knack-application-id' => @x_knack_application_id.dup,
                   'Content-Type' => 'application/json',
+                  'x-knack-rest-api-key' => @x_knack_rest_api_key.dup }
+      Blanket.wrap(@base_uri.dup,
+                   :headers => headers)
+    end
+
+    def file_request
+      headers = { 'Content-Type' => 'multipart/form-data',
                   'x-knack-rest-api-key' => @x_knack_rest_api_key.dup }
       Blanket.wrap(@base_uri.dup,
                    :headers => headers)
