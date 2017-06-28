@@ -20,9 +20,9 @@ describe Knackhq::Client do
     let(:cassette) { 'request' }
     subject(:knack_client_request) { client.send(:request) }
     it { is_expected.to be_a Blanket::Wrapper }
-    it { is_expected.to respond_to (:get) }
-    it { is_expected.to respond_to (:post) }
-    it { is_expected.to respond_to (:put) }
+    it { is_expected.to respond_to :get }
+    it { is_expected.to respond_to :post }
+    it { is_expected.to respond_to :put }
 
     context 'when Knack receives wrong application id' do
       let(:x_knack_application_id) { '000000000' }
@@ -124,7 +124,7 @@ describe Knackhq::Client do
         client.records(object, options)
       end
     end
-    let(:options) { { :no_options => nil } }
+    let(:options) { { no_options: nil } }
 
     context 'when records do not have options' do
       let(:first_records_keys) { subject[:records].first.keys }
@@ -148,7 +148,7 @@ describe Knackhq::Client do
 
     context 'when records have options' do
       let(:cassette) { 'records_object_options_4' }
-      let(:options) { { :rows_per_page => 10, :page_number => 2 } }
+      let(:options) { { rows_per_page: 10, page_number: 2 } }
 
       its([:total_pages]) { is_expected.to be 3 }
       its([:current_page]) { is_expected.to eq '2' }
@@ -181,7 +181,7 @@ describe Knackhq::Client do
     end
 
     context 'when record exists' do
-      its (:keys) do
+      its(:keys) do
         is_expected.to include :id,
                                :account_status,
                                :approval_status,
@@ -206,7 +206,7 @@ describe Knackhq::Client do
     subject do
       VCR.use_cassette(cassette) do
         client.update_record(object, knackhq_id,
-                             { :field_21 => '1116' }.to_json)
+                             { field_21: '1116' }.to_json)
       end
     end
 
@@ -233,7 +233,7 @@ describe Knackhq::Client do
   describe '#create' do
     let(:object) { 'object_3' }
     let(:cassette) { 'create_valid_record' }
-    let(:params) {{ field_21: "1115" }}
+    let(:params) { { field_21: '1115' } }
     subject do
       VCR.use_cassette(cassette) do
         client.create(object, params.to_json)
@@ -250,10 +250,44 @@ describe Knackhq::Client do
 
       it 'fails with /500 Internal Server Error/' do
         expect { subject }
-            .to raise_error.with_message(/500 Internal Server Error/)
+          .to raise_error.with_message(/500 Internal Server Error/)
       end
     end
-
   end
 
+  describe '#file_upload' do
+    let(:cassette) { 'file_upload' }
+    let(:file) { File.new(File.join('spec', 'fixtures', 'files', 'test_document.pdf')) }
+    let(:params) { { files: file } }
+
+    subject(:response) do
+      VCR.use_cassette(cassette) do
+        client.file_upload(params)
+      end
+    end
+    context 'when file is uploaded' do
+      it { expect(response['id']).to eq('595384046fa0b656cec2e5d3') }
+      it { expect(response['type']).to eq('file') }
+      it { expect(response['filename']).to eq('test_document.pdf') }
+      it { expect(response['size']).to eq(8200) }
+    end
+  end
+
+  describe '#image_upload' do
+    let(:cassette) { 'image_upload' }
+    let(:file) { File.new(File.join('spec', 'fixtures', 'files', 'test_image.png')) }
+    let(:params) { { files: file } }
+
+    subject(:response) do
+      VCR.use_cassette(cassette) do
+        client.image_upload(params)
+      end
+    end
+    context 'when image is uploaded' do
+      it { expect(response['id']).to eq('595385902a4223570f432a25') }
+      it { expect(response['type']).to eq('image') }
+      it { expect(response['filename']).to eq('test_image.png') }
+      it { expect(response['size']).to eq(104107) }
+    end
+  end
 end
