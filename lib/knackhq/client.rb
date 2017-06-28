@@ -65,15 +65,21 @@ module Knackhq
                      .objects(object)
                      .records(knackhq_id)
                      .put(body: json)
-      !payload_hash(hash_request).empty?
+      payload = payload_hash(hash_request)
+      translate_payload(payload) { payload }
+    rescue Blanket::Exception => e
+      e.body
     end
 
-    def create(object, data)
+    def create(object, json)
       hash_request = request
                      .objects(object)
                      .records
-                     .post(body: data)
-      !payload_hash(hash_request).empty?
+                     .post(body: json)
+      payload = payload_hash(hash_request)
+      translate_payload(payload) { payload }
+    rescue Blanket::Exception => e
+      e.body
     end
 
     def file_upload(data)

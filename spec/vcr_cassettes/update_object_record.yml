@@ -1,11 +1,11 @@
 ---
 http_interactions:
 - request:
-    method: post
-    uri: https://api.knackhq.com/v1/objects/object_37/records
+    method: put
+    uri: https://api.knackhq.com/v1/objects/object_37/records/5953a50ce39f6a5bb74c4781
     body:
       encoding: UTF-8
-      string: '{"field_384":"Lovelight","field_385":"Architect"}'
+      string: '{"field_384":"Manu","field_385":"Builder"}'
     headers:
       X-Knack-Application-Id:
       - 123456789
@@ -27,45 +27,45 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Wed, 28 Jun 2017 12:46:04 GMT
+      - Wed, 28 Jun 2017 13:17:23 GMT
       Etag:
-      - W/"89-9zhYE3eimPN5IHfbq6ZhQQ"
+      - W/"7b-rIqYWhifLyE+wbdYotF4QQ"
       P3p:
       - policyref="https://api.knackhq.com/w3c/p3p.xml", CP="IDC DSP COR ADM DEVi
         TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT", CP="CAO PSA OUR"
       Server:
       - nginx/1.4.6 (Ubuntu)
       Set-Cookie:
-      - connect.sid=s%3ASrQRohVOF9Q1jBHO7WwL6UV5psLRV61K.eVIA43MTqMy00zn3JwznHo55GRSpdvls8pXNvHr%2FC7Q;
+      - connect.sid=s%3Ao5MqklrEu4pAklbgthduMjyaeFf9h8zH.iXfKylYNBjlE339p8q1LYyUdAuWXBmVDam%2BR25z1ZdA;
         Domain=knack.com; Path=/; HttpOnly
       Vary:
       - Accept-Encoding
-      - X-HTTP-Method-Override, Accept-Encoding
+      - Accept-Encoding
       X-Content-Type-Options:
       - nosniff
       X-Knack-Server:
-      - us-east-1d (i-07dc5cb4efc07843d)
+      - us-east-1c (i-0e6b181fe24f4fd0b)
       X-Planlimit-Limit:
       - '5000'
       X-Planlimit-Remaining:
-      - '4775'
+      - '4774'
       X-Planlimit-Reset:
-      - '40435631'
+      - '38556069'
       X-Ratelimit-Limit:
       - '10'
       X-Ratelimit-Remaining:
       - '9'
       X-Ratelimit-Reset:
-      - '1498653966'
+      - '1498655845'
       X-Request-Id:
-      - 5953a50ce39f6a5bb74c4780
+      - 5953ac63083d105b4c3fb920
       Content-Length:
-      - '137'
+      - '123'
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"id":"5953a50ce39f6a5bb74c4781","field_384":"Lovelight","field_384_raw":"Lovelight","field_385":"Architect","field_385_raw":"Architect"}'
+      string: '{"id":"5953a50ce39f6a5bb74c4781","field_384":"Manu","field_384_raw":"Manu","field_385":"Builder","field_385_raw":"Builder"}'
     http_version: 
-  recorded_at: Wed, 28 Jun 2017 12:46:04 GMT
+  recorded_at: Wed, 28 Jun 2017 13:17:24 GMT
 recorded_with: VCR 2.9.3

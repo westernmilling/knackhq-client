@@ -200,58 +200,58 @@ describe Knackhq::Client do
   end
 
   describe '#update_record' do
-    let(:object) { 'object_2' }
-    let(:knackhq_id) { '999999999' }
-    let(:cassette) { 'update_records_object_2' }
-    subject do
+    let(:object) { 'object_37' }
+    let(:knackhq_id) { '5953a50ce39f6a5bb74c4781' }
+    let(:cassette) { 'update_object_record' }
+    let(:params) { { field_384: 'Manu', field_385: 'Builder' } }
+    subject(:response) do
       VCR.use_cassette(cassette) do
-        client.update_record(object, knackhq_id,
-                             { field_21: '1116' }.to_json)
+        client.update_record(object, knackhq_id, params.to_json)
       end
     end
 
-    context 'when object records exist' do
-      it { is_expected.to be true }
+    context 'when record is updated' do
+      it { expect(response[:id]).to eq('5953a50ce39f6a5bb74c4781') }
+      it { expect(response[:field_384]).to eq('Manu') }
+      it { expect(response[:field_385]).to eq('Builder') }
     end
 
-    context 'when object records do not exist' do
+    context 'when record does not exist' do
       let(:knackhq_id) { '77777777' }
-      it { is_expected.to be false }
+      let(:cassette) { 'invalid_record' }
+      it { expect(response).to eq("Malformed Record Key: #{knackhq_id}") }
     end
 
     context 'when object does not exist' do
-      let(:cassette) { 'invalid_record_update' }
+      let(:cassette) { 'object_does_not_exist' }
       let(:object) { 'invalid_object' }
 
-      it 'fails with /500 Internal Server Error/' do
-        expect { subject }
-          .to raise_error.with_message(/500 Internal Server Error/)
-      end
+      it { expect(response).to eq('Malformed Object Key: invalid_object') }
     end
   end
 
   describe '#create' do
-    let(:object) { 'object_3' }
+    let(:object) { 'object_37' }
     let(:cassette) { 'create_valid_record' }
-    let(:params) { { field_21: '1115' } }
-    subject do
+    let(:params) { { field_384: 'Lovelight', field_385: 'Architect' } }
+    subject(:response) do
       VCR.use_cassette(cassette) do
         client.create(object, params.to_json)
       end
     end
 
     context 'when object record is created' do
-      it { is_expected.to be true }
+      it { expect(response[:id]).to eq('5953a50ce39f6a5bb74c4781') }
+      it { expect(response[:field_384]).to eq('Lovelight') }
+      it { expect(response[:field_385]).to eq('Architect') }
     end
 
     context 'when object record is not created' do
       let(:cassette) { 'record_not_created' }
       let(:object) { 'invalid_object' }
 
-      it 'fails with /500 Internal Server Error/' do
-        expect { subject }
-          .to raise_error.with_message(/500 Internal Server Error/)
-      end
+      it { expect(response).to eq('Malformed Object Key: invalid_object') }
+
     end
   end
 

@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.knackhq.com/v1/objects/invalid_object/records
     body:
       encoding: UTF-8
-      string: '{"field_21":"1115"}'
+      string: '{"field_384":"Lovelight","field_385":"Architect"}'
     headers:
       X-Knack-Application-Id:
       - 123456789
@@ -15,8 +15,8 @@ http_interactions:
       - 123-456-789
   response:
     status:
-      code: 500
-      message: Internal Server Error
+      code: 400
+      message: Bad Request
     headers:
       Access-Control-Allow-Credentials:
       - 'true'
@@ -25,48 +25,32 @@ http_interactions:
       Access-Control-Allow-Methods:
       - GET, POST, OPTIONS, PUT, DELETE
       Content-Type:
-      - application/json; charset=utf-8
+      - text/html; charset=utf-8
       Date:
-      - Thu, 22 Jun 2017 13:26:36 GMT
+      - Wed, 28 Jun 2017 12:47:35 GMT
       Etag:
-      - W/"89-5q6f1D1Vich/+t/YdYclkA"
+      - W/"24-vbvgieDi7HcSTuRtQv80aw"
       P3p:
       - policyref="https://api.knackhq.com/w3c/p3p.xml", CP="IDC DSP COR ADM DEVi
         TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT", CP="CAO PSA OUR"
       Server:
       - nginx/1.4.6 (Ubuntu)
       Set-Cookie:
-      - connect.sid=s%3Ane8-kBUYwQHJ2AmMLYzTYx7NE5PZ2_0l.vPnNWk0x0UUcpaYchmRHvDntlWfqnE7rqU%2B0G7u144Y;
+      - connect.sid=s%3Aigvb2dM_4jgvMQBBSsBbBcRvIPJv-bmL.8%2BV462l8tBtXcI1SMXbmeL6jr2nWcx1Ecnx57YD%2B0tY;
         Domain=knack.com; Path=/; HttpOnly
       Vary:
-      - Accept-Encoding
       - X-HTTP-Method-Override, Accept-Encoding
-      X-Content-Type-Options:
-      - nosniff
       X-Knack-Server:
-      - us-east-1c (i-00d733beab7bdeee4)
-      X-Planlimit-Limit:
-      - '5000'
-      X-Planlimit-Remaining:
-      - '4569'
-      X-Planlimit-Reset:
-      - '38003382'
-      X-Ratelimit-Limit:
-      - '10'
-      X-Ratelimit-Remaining:
-      - '9'
-      X-Ratelimit-Reset:
-      - '1498137998'
+      - us-east-1c (i-0bd6f69da6c3d1de7)
       X-Request-Id:
-      - 594bc58c9ba8e351a2178529
+      - 5953a567e2c8e45c5e3b1bd1
       Content-Length:
-      - '137'
+      - '36'
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string:
-        Internal Server Error
+      string: 'Malformed Object Key: invalid_object'
     http_version: 
-  recorded_at: Thu, 22 Jun 2017 13:26:36 GMT
+  recorded_at: Wed, 28 Jun 2017 12:47:35 GMT
 recorded_with: VCR 2.9.3

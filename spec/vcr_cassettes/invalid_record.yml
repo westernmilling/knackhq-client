@@ -1,11 +1,11 @@
 ---
 http_interactions:
 - request:
-    method: post
-    uri: https://api.knackhq.com/v1/objects/object_37/records
+    method: put
+    uri: https://api.knackhq.com/v1/objects/object_37/records/77777777
     body:
       encoding: UTF-8
-      string: '{"field_384":"Lovelight","field_385":"Architect"}'
+      string: '{"field_384":"Manu","field_385":"Builder"}'
     headers:
       X-Knack-Application-Id:
       - 123456789
@@ -15,8 +15,8 @@ http_interactions:
       - 123-456-789
   response:
     status:
-      code: 200
-      message: OK
+      code: 400
+      message: Bad Request
     headers:
       Access-Control-Allow-Credentials:
       - 'true'
@@ -25,47 +25,32 @@ http_interactions:
       Access-Control-Allow-Methods:
       - GET, POST, OPTIONS, PUT, DELETE
       Content-Type:
-      - application/json; charset=utf-8
+      - text/html; charset=utf-8
       Date:
-      - Wed, 28 Jun 2017 12:46:04 GMT
+      - Wed, 28 Jun 2017 13:20:06 GMT
       Etag:
-      - W/"89-9zhYE3eimPN5IHfbq6ZhQQ"
+      - W/"1e-nBn3QZr/7Wl5fvQ7CW/jQA"
       P3p:
       - policyref="https://api.knackhq.com/w3c/p3p.xml", CP="IDC DSP COR ADM DEVi
         TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT", CP="CAO PSA OUR"
       Server:
       - nginx/1.4.6 (Ubuntu)
       Set-Cookie:
-      - connect.sid=s%3ASrQRohVOF9Q1jBHO7WwL6UV5psLRV61K.eVIA43MTqMy00zn3JwznHo55GRSpdvls8pXNvHr%2FC7Q;
+      - connect.sid=s%3AuBZdwgDV-OqRpizqQWSU3efrptsk56DG.8Cf%2B93MoAG3wZlqklGgGKhMqT%2BmsIBAcemt7QSyUzps;
         Domain=knack.com; Path=/; HttpOnly
       Vary:
       - Accept-Encoding
-      - X-HTTP-Method-Override, Accept-Encoding
-      X-Content-Type-Options:
-      - nosniff
       X-Knack-Server:
-      - us-east-1d (i-07dc5cb4efc07843d)
-      X-Planlimit-Limit:
-      - '5000'
-      X-Planlimit-Remaining:
-      - '4775'
-      X-Planlimit-Reset:
-      - '40435631'
-      X-Ratelimit-Limit:
-      - '10'
-      X-Ratelimit-Remaining:
-      - '9'
-      X-Ratelimit-Reset:
-      - '1498653966'
+      - us-east-1c (i-06310a050dd5a567a)
       X-Request-Id:
-      - 5953a50ce39f6a5bb74c4780
+      - 5953ad06d608385c8b3cf91a
       Content-Length:
-      - '137'
+      - '30'
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"id":"5953a50ce39f6a5bb74c4781","field_384":"Lovelight","field_384_raw":"Lovelight","field_385":"Architect","field_385_raw":"Architect"}'
+      string: 'Malformed Record Key: 77777777'
     http_version: 
-  recorded_at: Wed, 28 Jun 2017 12:46:04 GMT
+  recorded_at: Wed, 28 Jun 2017 13:20:06 GMT
 recorded_with: VCR 2.9.3
