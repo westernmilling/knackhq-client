@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    knackhq-client (0.3.2)
+    knackhq-client (0.3.4)
       blanket_wrapper (~> 3.0.0)
       hashie
       rest-client
