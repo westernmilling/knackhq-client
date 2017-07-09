@@ -51,6 +51,17 @@ module Knackhq
       translate_payload(payload) { payload }
     end
 
+    def record_exists?(object, rules, condition=nil)
+      param_hash = {}
+      param_hash[:match] = condition.downcase if !condition.nil? and ['and', 'or'].include?(condition.downcase)
+      param_hash[:rules] = rules
+      hash_request = request
+                     .objects(object)
+                     .records
+                     .get(params: { filters: param_hash.to_json })
+      payload_hash(hash_request)[:records].any?
+    end
+
     def record(object, record_knackhq_id)
       hash_request = request
                      .objects(object)
