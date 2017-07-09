@@ -231,6 +231,34 @@ describe Knackhq::Client do
     end
   end
 
+  describe '#search' do
+    let(:object) { 'object_3' }
+    let(:condition) { 'and' }
+    let(:cassette) { 'search_records' }
+    subject(:response) do
+      VCR.use_cassette(cassette) do
+        client.search(object, rules, condition)
+      end
+    end
+
+    context 'when records are present' do
+      let(:rules) do
+        [{ field: 'field_1', operator: 'is', value: '595e42b8d1fca5524662f62c' }]
+      end
+      it { expect(response[:records]).not_to be_empty }
+    end
+
+    context 'when search result is blank' do
+      let(:rules) do
+        [
+          { field: 'field_1', operator: 'is', value: '849asd89asd125afg86tr45t' }
+        ]
+      end
+      let(:cassette) { 'search_records_empty' }
+      it { expect(response[:records]).to be_empty }
+    end
+  end
+
   describe '#update_record' do
     let(:object) { 'object_37' }
     let(:knackhq_id) { '5953a50ce39f6a5bb74c4781' }

@@ -1,0 +1,73 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.knackhq.com/v1/objects/object_3/records?filters=%7B%22match%22:%22and%22,%22rules%22:%5B%7B%22field%22:%22field_1%22,%22operator%22:%22is%22,%22value%22:%22595e42b8d1fca5524662f62c%22%7D%5D%7D
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Knack-Application-Id:
+      - 123456789
+      Content-Type:
+      - application/json
+      X-Knack-Rest-Api-Key:
+      - 123-456-789
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - DNT,Authorization,Origin,X-Requested-With,X-HTTP-Method-Override,Content-Type,Accept,X-Knack-Application-Id,X-Knack-REST-API-Key,Knack_Application_Id,Knack_REST_API_Key,x-knack-new-builder,x-knack-proxied
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS, PUT, DELETE
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 09 Jul 2017 11:28:07 GMT
+      Etag:
+      - W/"212-v3ysc8peNMlXGDyjd2t/7w"
+      P3p:
+      - policyref="https://api.knackhq.com/w3c/p3p.xml", CP="IDC DSP COR ADM DEVi
+        TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT", CP="CAO PSA OUR"
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Set-Cookie:
+      - connect.sid=s%3AAO6nS1A5sm9whB9IpGCZ8vYWXDP3FWjG.ZQd2sVPe3IvbkHzyGEMrmolZ3Q8VY9lcAzH0AYKqKv0;
+        Domain=knack.com; Path=/; HttpOnly
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Knack-Server:
+      - us-east-1c (i-09f56127c77488eb5)
+      X-Planlimit-Limit:
+      - '5000'
+      X-Planlimit-Remaining:
+      - '4969'
+      X-Planlimit-Reset:
+      - '45112466'
+      X-Ratelimit-Limit:
+      - '10'
+      X-Ratelimit-Remaining:
+      - '9'
+      X-Ratelimit-Reset:
+      - '1499599689'
+      X-Request-Id:
+      - 5962134725158d549deb6135
+      Content-Length:
+      - '530'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"total_pages":1,"current_page":1,"total_records":1,"records":[{"id":"595e42b9daea344d691d2548","field_1":"<span
+        class=\"595e42b8d1fca5524662f62c\">Metricon Developer</span>","field_1_raw":[{"id":"595e42b8d1fca5524662f62c","identifier":"Metricon
+        Developer"}]}]}'
+    http_version: 
+  recorded_at: Sun, 09 Jul 2017 11:28:07 GMT
+recorded_with: VCR 2.9.3
