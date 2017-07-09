@@ -199,6 +199,38 @@ describe Knackhq::Client do
     end
   end
 
+  describe '#record_exists?' do
+    let(:object) { 'object_3' }
+    let(:condition) { 'and' }
+    let(:cassette) { 'record_exists' }
+    subject(:response) do
+      VCR.use_cassette(cassette) do
+        client.record_exists?(object, rules, condition)
+      end
+    end
+
+    context 'when record exists' do
+      let(:rules) do
+        [
+            { 'field' => 'field_1', 'operator' => 'is', 'value' => '595e42bcefac9a4f1a2797b3' },
+            { 'field' => 'field_2', 'operator' => 'is', 'value' => '595e42b8d1fca5524662f62c' }
+        ]
+      end
+      it { expect(response).to be_truthy }
+    end
+
+    context 'when record does not exist' do
+      let(:rules) do
+        [
+            { 'field' => 'field_1', 'operator' => 'is', 'value' => '595e42bcefac9a445sa4' },
+            { 'field' => 'field_2', 'operator' => 'is', 'value' => '595e42b8ewrwecvxcv54' }
+        ]
+      end
+      let(:cassette) { 'record_does_not_exists' }
+      it { expect(response).to be_falsey }
+    end
+  end
+
   describe '#update_record' do
     let(:object) { 'object_37' }
     let(:knackhq_id) { '5953a50ce39f6a5bb74c4781' }
