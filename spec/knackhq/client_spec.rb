@@ -315,6 +315,29 @@ describe Knackhq::Client do
     end
   end
 
+  describe '#delete' do
+    let(:object) { 'object_37' }
+    let(:cassette) { 'delete_record' }
+    let(:knackhq_id) { '59cca938ns764c028u5r23ve32' }
+    subject(:response) do
+      VCR.use_cassette(cassette) do
+        client.delete(object, knackhq_id)
+      end
+    end
+
+    context 'when object record is deleted' do
+      it { expect(response[:delete]).to eq true }
+    end
+
+    context 'when object record is not created' do
+      let(:cassette) { 'record_not_deleted' }
+      let(:object) { 'object_37' }
+      let(:knackhq_id) { 'invalid_object' }
+
+      it { expect(response).to eq('Malformed Record Key: invalid_object') }
+    end
+  end
+
   describe '#file_upload' do
     let(:cassette) { 'file_upload' }
     let(:file) { File.new(File.join('spec', 'fixtures', 'files', 'test_document.pdf')) }

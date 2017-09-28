@@ -1,0 +1,70 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: https://api.knackhq.com/v1/objects/object_37/records/59cca938ns764c028u5r23ve32
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Knack-Application-Id:
+      - 123456789
+      Content-Type:
+      - application/json
+      X-Knack-Rest-Api-Key:
+      - 123-456-789
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - DNT,Authorization,Origin,X-Requested-With,X-HTTP-Method-Override,Content-Type,Accept,X-Knack-Application-Id,X-Knack-REST-API-Key,Knack_Application_Id,Knack_REST_API_Key,x-knack-new-builder,x-knack-proxied
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS, PUT, DELETE
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 28 Sep 2017 10:57:54 GMT
+      Etag:
+      - W/"f-fvu1eKvt/4jFcuBsa3qIoA"
+      P3p:
+      - policyref="https://api.knackhq.com/w3c/p3p.xml", CP="IDC DSP COR ADM DEVi
+        TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT", CP="CAO PSA OUR"
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Set-Cookie:
+      - connect.sid=s%3AoLas0WAeciB36c87q3yzwgYfdd9jzOdK.YvLwUCh8iZlSsSA0KoRnTsoXK862aCLvAqeodSE6w6Q;
+        Domain=knack.com; Path=/; HttpOnly
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Knack-Server:
+      - us-east-1d (i-00cea3158c57647a1)
+      X-Planlimit-Limit:
+      - '30000'
+      X-Planlimit-Remaining:
+      - '29725'
+      X-Planlimit-Reset:
+      - '46925968'
+      X-Ratelimit-Limit:
+      - '10'
+      X-Ratelimit-Remaining:
+      - '9'
+      X-Ratelimit-Reset:
+      - '1506596276'
+      X-Request-Id:
+      - 59ccd5b1077dff2630ba95f9
+      Content-Length:
+      - '15'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"delete":true}'
+    http_version: 
+  recorded_at: Thu, 28 Sep 2017 10:57:54 GMT
+recorded_with: VCR 2.9.3
