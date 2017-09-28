@@ -105,6 +105,17 @@ module Knackhq
       e.body
     end
 
+    def delete(object, knackhq_id)
+      hash_request = request
+                     .objects(object)
+                     .records(knackhq_id)
+                     .delete
+      payload = payload_hash(hash_request)
+      translate_payload(payload) { payload }
+    rescue Blanket::Exception => e
+      e.body
+    end
+
     def file_upload(data)
       response =
         RestClient.post(
