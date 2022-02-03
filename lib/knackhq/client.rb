@@ -147,7 +147,8 @@ module Knackhq
     def file_headers
       {
         'Content-Type' => 'multipart/form-data',
-        'x-knack-rest-api-key' => @x_knack_rest_api_key.dup
+        'x-knack-rest-api-key' => @x_knack_rest_api_key.dup,
+        'x-knack-application-id' => @x_knack_application_id.dup
       }
     end
 
