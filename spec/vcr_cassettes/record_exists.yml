@@ -1,11 +1,11 @@
 ---
 http_interactions:
 - request:
-    method: post
-    uri: https://api.knackhq.com/v1/objects/object_37/records
+    method: get
+    uri: https://api.knackhq.com/v1/objects/object_3/records?filters=%7B%22match%22:%22and%22,%22rules%22:%5B%7B%22field%22:%22field_1%22,%22operator%22:%22is%22,%22value%22:%22595e42bcefac9a4f1a2797b3%22%7D,%7B%22field%22:%22field_2%22,%22operator%22:%22is%22,%22value%22:%22595e42b8d1fca5524662f62c%22%7D%5D%7D
     body:
-      encoding: UTF-8
-      string: '{"field_384":"Lovelight","field_385":"Architect"}'
+      encoding: US-ASCII
+      string: ''
     headers:
       X-Knack-Application-Id:
       - 123456789
@@ -27,45 +27,46 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Wed, 28 Jun 2017 12:46:04 GMT
+      - Sun, 09 Jul 2017 09:18:59 GMT
       Etag:
-      - W/"89-9zhYE3eimPN5IHfbq6ZhQQ"
+      - W/"1e4-Dlb87C+Lw8KS7Ogg4nvgfA"
       P3p:
       - policyref="https://api.knackhq.com/w3c/p3p.xml", CP="IDC DSP COR ADM DEVi
         TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT", CP="CAO PSA OUR"
       Server:
       - nginx/1.4.6 (Ubuntu)
       Set-Cookie:
-      - connect.sid=s%3ASrQRohVOF9Q1jBHO7WwL6UV5psLRV61K.eVIA43MTqMy00zn3JwznHo55GRSpdvls8pXNvHr%2FC7Q;
+      - connect.sid=s%3Ab4pRAy6Z7krj8ePXYh4-tCJ0nMoxBZqr.p9Jea9wpFtWTttyI3Haj7w0I2TGtCTsME%2FcanZKaml0;
         Domain=knack.com; Path=/; HttpOnly
       Vary:
       - Accept-Encoding
-      - X-HTTP-Method-Override, Accept-Encoding
+      - Accept-Encoding
       X-Content-Type-Options:
       - nosniff
       X-Knack-Server:
-      - us-east-1d (i-07dc5cb4efc07843d)
+      - us-east-1d (i-0f836533bb75fc012)
       X-Planlimit-Limit:
       - '5000'
       X-Planlimit-Remaining:
-      - '4775'
+      - '4988'
       X-Planlimit-Reset:
-      - '40435631'
+      - '52860869'
       X-Ratelimit-Limit:
       - '10'
       X-Ratelimit-Remaining:
       - '9'
       X-Ratelimit-Reset:
-      - '1498653966'
+      - '1499591941'
       X-Request-Id:
-      - 5953a50ce39f6a5bb74c4780
+      - 5961f502192de66c7036148c
       Content-Length:
-      - '137'
+      - '484'
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"id":"5953a50ce39f6a5bb74c4781","field_384":"Lovelight","field_384_raw":"Lovelight","field_385":"Architect","field_385_raw":"Architect"}'
-    http_version: 
-  recorded_at: Wed, 28 Jun 2017 12:46:04 GMT
+      string: '{"total_pages":1,"current_page":1,"total_records":1,"records":[{"id":"5960e9cb662bde5508afc2b2","field_1_raw":[{"id":"595e42bcefac9a4f1a2797b3"}],
+              "field_2_raw":[{"id":"595e42b8d1fca5524662f62c"}]}]}'
+    http_version:
+  recorded_at: Sun, 09 Jul 2017 09:18:59 GMT
 recorded_with: VCR 2.9.3

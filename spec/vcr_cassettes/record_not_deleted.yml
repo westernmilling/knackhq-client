@@ -1,11 +1,11 @@
 ---
 http_interactions:
 - request:
-    method: post
-    uri: https://api.knackhq.com/v1/objects/object_37/records
+    method: delete
+    uri: https://api.knackhq.com/v1/objects/object_37/records/invalid_object
     body:
-      encoding: UTF-8
-      string: '{"field_384":"Lovelight","field_385":"Architect"}'
+      encoding: US-ASCII
+      string: ''
     headers:
       X-Knack-Application-Id:
       - 123456789
@@ -15,8 +15,8 @@ http_interactions:
       - 123-456-789
   response:
     status:
-      code: 200
-      message: OK
+      code: 400
+      message: Bad Request
     headers:
       Access-Control-Allow-Credentials:
       - 'true'
@@ -25,47 +25,44 @@ http_interactions:
       Access-Control-Allow-Methods:
       - GET, POST, OPTIONS, PUT, DELETE
       Content-Type:
-      - application/json; charset=utf-8
+      - text/html; charset=utf-8
       Date:
-      - Wed, 28 Jun 2017 12:46:04 GMT
+      - Thu, 28 Sep 2017 10:55:45 GMT
       Etag:
-      - W/"89-9zhYE3eimPN5IHfbq6ZhQQ"
+      - W/"24-/VbjWnW9OK056I3+rHFV8g"
       P3p:
       - policyref="https://api.knackhq.com/w3c/p3p.xml", CP="IDC DSP COR ADM DEVi
         TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT", CP="CAO PSA OUR"
       Server:
       - nginx/1.4.6 (Ubuntu)
       Set-Cookie:
-      - connect.sid=s%3ASrQRohVOF9Q1jBHO7WwL6UV5psLRV61K.eVIA43MTqMy00zn3JwznHo55GRSpdvls8pXNvHr%2FC7Q;
+      - connect.sid=s%3AuQHp7kCfWqpL8Xi1LoLWTwPWSbqdtHAv.Up5FXARCYPYqu9sR5sn2bv%2FemDqn4uGMn5AvrZ97mc8;
         Domain=knack.com; Path=/; HttpOnly
       Vary:
       - Accept-Encoding
-      - X-HTTP-Method-Override, Accept-Encoding
-      X-Content-Type-Options:
-      - nosniff
       X-Knack-Server:
-      - us-east-1d (i-07dc5cb4efc07843d)
+      - us-east-1c (i-0bbd655449e8cff8f)
       X-Planlimit-Limit:
-      - '5000'
+      - '30000'
       X-Planlimit-Remaining:
-      - '4775'
+      - '29727'
       X-Planlimit-Reset:
-      - '40435631'
+      - '47054026'
       X-Ratelimit-Limit:
       - '10'
       X-Ratelimit-Remaining:
       - '9'
       X-Ratelimit-Reset:
-      - '1498653966'
+      - '1506596147'
       X-Request-Id:
-      - 5953a50ce39f6a5bb74c4780
+      - 59ccd531ba0a2c20e36149a9
       Content-Length:
-      - '137'
+      - '36'
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"id":"5953a50ce39f6a5bb74c4781","field_384":"Lovelight","field_384_raw":"Lovelight","field_385":"Architect","field_385_raw":"Architect"}'
+      string: 'Malformed Record Key: invalid_object'
     http_version: 
-  recorded_at: Wed, 28 Jun 2017 12:46:04 GMT
+  recorded_at: Thu, 28 Sep 2017 10:55:46 GMT
 recorded_with: VCR 2.9.3
